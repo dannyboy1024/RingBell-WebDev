@@ -27,6 +27,10 @@ if (process.env.NODE_ENV === "development") {
 
 // Mount routers
 app.use("/api/v1/listeners", listeners);
+app.use("/", (req, res, next) => {
+  res.send("Welcome to RingBell API");
+  next();
+});
 
 // error
 app.use(errorHandler);
@@ -40,6 +44,6 @@ const server = app.listen(
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
-    console.log(`Error: ${err.message}`.red);
-    server.close(() => process.exit(1));
+  console.log(`Error: ${err.message}`.red);
+  server.close(() => process.exit(1));
 })
