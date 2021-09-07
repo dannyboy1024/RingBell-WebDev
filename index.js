@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const connectDB = require("./config/db");
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
+const CROS_handeler = require("./middleware/CORS_handeler");
 
 // Load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -16,6 +17,9 @@ const listeners = require("./routers/listeners");
 const { propfind } = require("./routers/listeners");
 
 const app = express();
+
+// CROS
+app.use(CROS_handeler);
 
 // Body parser
 app.use(express.json());
