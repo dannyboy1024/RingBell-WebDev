@@ -34,7 +34,7 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc        Get matched listener
+// @desc        TEST
 // @route       POST /api/v1/listeners
 // @access      Private
 exports.test = asyncHandler(async (req, res, next) => {
