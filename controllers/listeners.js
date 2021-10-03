@@ -34,6 +34,14 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc        Get matched listener
+// @route       POST /api/v1/listeners
+// @access      Private
+exports.test = asyncHandler(async (req, res, next) => {
+  const listeners = await Listener.find(req.query);
+  res.status(200).json({ success: true, count: listeners.length, data: listeners });
+});
+
 
 // @desc        Create new listener
 // @route       POST /api/v1/listeners
