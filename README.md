@@ -7,7 +7,7 @@ get single Listener by ID:
 GET https://ringbell-api.herokuapp.com/api/v1/listeners/<id>
   
 get matched Listener (in progress):
-POST https://ringbell-api.herokuapp.com/api/v1/listeners/<id>
+POST https://ringbell-api.herokuapp.com/api/v1/listeners/getMatched
 
 create a Listener:
 POST https://ringbell-api.herokuapp.com/api/v1/listeners/
