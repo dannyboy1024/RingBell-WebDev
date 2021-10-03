@@ -25,7 +25,7 @@ exports.getListener = asyncHandler(async (req, res, next) => {
 // @desc        Get matched listener
 // @route       POST /api/v1/listeners
 // @access      Private
-exports.createListener = asyncHandler(async (req, res, next) => {
+exports.getMatchListener = asyncHandler(async (req, res, next) => {
   // const listener = await Listener.create(req.body);
   const matchingData = req.body;
   res.status(201).json({

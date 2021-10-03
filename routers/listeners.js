@@ -3,7 +3,7 @@ const express = require("express");
 const {
   getListeners,
   getListener,
-  getMatchedListener,
+  getMatchListener,
   createListener,
   updateListener,
   deleteListener,
@@ -15,6 +15,10 @@ router
   .route("/")
   .get(getListeners)
   .post(createListener);
+  
+router
+    .route("/getMatch")
+    .post(getMatchListener);
 
 router
   .route("/:id")
@@ -22,8 +26,5 @@ router
   .put(updateListener)
   .delete(deleteListener);
 
-router
-  .route("/getMatch")
-  .post(getMatchedListener);
 
 module.exports = router;
