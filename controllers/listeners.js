@@ -28,7 +28,7 @@ exports.getListener = asyncHandler(async (req, res, next) => {
 exports.getMatchListener = asyncHandler(async (req, res, next) => {
   // const listener = await Listener.create(req.body);
   const matchingData = req.body;
-  res.status(201).json({
+  res.status(200).json({
     success: true,
     data: matchingData
   });
