@@ -1,4 +1,5 @@
 const ErrorResponse = require('../utils/errorResponse');
+const ListenerMatcher = require('../utils/ListenerMatcher');
 const Listener = require('../models/Listener');
 const asyncHandler = require('../middleware/async');
 
@@ -27,10 +28,13 @@ exports.getListener = asyncHandler(async (req, res, next) => {
 // @access      Private
 exports.getMatchListener = asyncHandler(async (req, res, next) => {
   // const listener = await Listener.create(req.body);
-  const matchingData = req.body;
+  const timeSlots = req.body;
+  const listener = await Listener.find(req.query);
+  const listenerMatcher = new ListenerMatcher(timeSlots.body, listener);
+
   res.status(200).json({
     success: true,
-    data: matchingData
+    data: listenerMatcher.getMatchedListeners()
   });
 });
 
