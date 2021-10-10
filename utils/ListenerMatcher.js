@@ -1,3 +1,4 @@
+
 class ListenerMatcher {
 
     constructor(slots, listeners) {
@@ -5,21 +6,33 @@ class ListenerMatcher {
         this.listeners = [...listeners];
     }
 
-    getAvailibileListeners () {
-        const {slots} = this;
-        const avaliableListeners = this.listeners.filter(listener => {
-            for (let slot of slots) {
-                if (listener.availability.includes(slot)) return true;
-            }
-            return false;
-        });
-        return avaliableListeners;
-    }
-
-    getMatchedListeners (){
-        const avaliableListeners = this.getAvailibileListeners();
+    getMatchedListener() {
+        // get avaliable listeners
+        const { slots } = this;
+        var chosenSlot;
+        var matchedListener = null;
         
-        return avaliableListeners[0];
+        for (const listener of this.listeners){
+            for (let slot of slots) {
+                if (listener.availability.includes(slot)) {
+                    chosenSlot = slot;
+                    matchedListener = listener;
+                    break;
+                }
+            }
+            if (matchedListener){
+                break;
+            }
+        }
+
+        if (typeof matchedListener !== 'undefined' && matchedListener) {
+            // update availability
+            const index = matchedListener.availability.indexOf(chosenSlot);
+            matchedListener.availability.splice(index, 1);
+            return matchedListener;
+        } else {
+            return 404;
+        }
     }
 
 }

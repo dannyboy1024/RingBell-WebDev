@@ -14,8 +14,8 @@ const router = express.Router();
 
 router
     .route("/getMatch")
-    .post(getMatchListener)
-    .get(test);
+    .post(getMatchListener);
+    // .get(test);
     
 router
   .route("/")
