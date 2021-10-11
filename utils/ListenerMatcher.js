@@ -25,7 +25,7 @@ class ListenerMatcher {
             }
         }
 
-        if (typeof matchedListener !== 'undefined' && matchedListener) {
+        if (matchedListener) {
             // update availability
             const index = matchedListener.availability.indexOf(chosenSlot);
             matchedListener.availability.splice(index, 1);

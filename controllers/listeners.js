@@ -32,12 +32,14 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
   const listenerMatcher = new ListenerMatcher(timeSlots.body, listeners);
 
   // queue (may be better to put in a seprate "confirm selection" request)
-  if (listenerMatcher.getMatchedListener() == 404) {
+  const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
+
+  if (matchedListener == 404) {
     return next(new ErrorResponse(`No listener is avaliable at given time slots`, 404));
   } else {
-    const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
-    await Listener.findByIdAndDelete(matchedListener._id);
-    await Listener.create(matchedListener);
+    // const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
+    // await Listener.findByIdAndDelete(matchedListener._id);
+    // await Listener.create(matchedListener);
     res.status(200).json({
       success: true,
       data: matchedListener
