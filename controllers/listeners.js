@@ -37,9 +37,8 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
   if (matchedListener == 404) {
     return next(new ErrorResponse(`No listener is avaliable at given time slots`, 404));
   } else {
-    // const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
-    // await Listener.findByIdAndDelete(matchedListener._id);
-    // await Listener.create(matchedListener);
+    await Listener.findByIdAndDelete(matchedListener._id);
+    await Listener.create(matchedListener);
     res.status(200).json({
       success: true,
       data: matchedListener
