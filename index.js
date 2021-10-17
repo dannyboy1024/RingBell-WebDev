@@ -36,7 +36,7 @@ app.use("/", (req, res, next) => {
   next();
 });
 
-// error
+// error handler
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

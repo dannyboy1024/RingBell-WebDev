@@ -11,7 +11,7 @@ class ListenerMatcher {
         const { slots } = this;
         var chosenSlot;
         var matchedListener = null;
-        
+
         for (const listener of this.listeners){
             for (let slot of slots) {
                 if (listener.availability.includes(slot)) {
@@ -27,8 +27,9 @@ class ListenerMatcher {
 
         if (matchedListener) {
             // update availability
-            // const index = matchedListener.availability.indexOf(chosenSlot);
-            // matchedListener.availability.splice(index, 1);
+            const index = matchedListener.availability.indexOf(chosenSlot);
+            matchedListener.availability.splice(index, 1);
+            matchedListener.occupied_availability.push(chosenSlot);
             return matchedListener;
         } else {
             return 404;

@@ -1,0 +1,62 @@
+[
+  {
+    "_id": {
+      "$oid": "616bb90508209cc57b2828f0"
+    },
+    "name": "Dale",
+    "email": "bellringtest@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [1, 21],
+    "occupied_availability": [],
+    "application_time": {
+      "$date": "2021-10-17T05:47:49.314Z"
+    },
+    "slug": "dale",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "616bb9ae4e853592c2104183"
+    },
+    "name": "Kate",
+    "email": "bellringtest@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [1, 2, 3],
+    "occupied_availability": [],
+    "application_time": {
+      "$date": "2021-10-17T05:50:38.898Z"
+    },
+    "slug": "kate",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "616bb9b94e853592c2104185"
+    },
+    "name": "Mike",
+    "email": "bellringtest@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [1, 2, 3],
+    "occupied_availability": [],
+    "application_time": {
+      "$date": "2021-10-17T05:50:49.778Z"
+    },
+    "slug": "mike",
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "616bb9c04e853592c2104187"
+    },
+    "name": "Lio",
+    "email": "bellringtest@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [50, 167],
+    "occupied_availability": [],
+    "application_time": {
+      "$date": "2021-10-17T05:50:56.115Z"
+    },
+    "slug": "lio",
+    "__v": 0
+  }
+]

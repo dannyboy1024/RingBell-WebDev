@@ -2,12 +2,14 @@ const ErrorResponse = require('../utils/errorResponse');
 const ListenerMatcher = require('../utils/ListenerMatcher');
 const Listener = require('../models/Listener');
 const asyncHandler = require('../middleware/async');
+const availabilityUpdater = require("../utils/AvailabilityUpdater");
 
 // @desc        Get all listeners
 // @route       GET /api/v1/listeners
 // @access      Public
 exports.getListeners = asyncHandler(async (req, res, next) => {
   const listeners = await Listener.find(req.query);
+  availabilityUpdater(listeners);
   res.status(200).json({ success: true, count: listeners.length, data: listeners });
 });
 
@@ -20,6 +22,14 @@ exports.getListener = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Listener not found with id of ${req.params.id}`, 404));
   }
   res.status(200).json({ success: true, data: listener });
+});
+
+// @desc        get all timeslots
+// @route       POST /api/v1/listeners
+// @access      Private
+exports.getTimeslots = asyncHandler(async (req, res, next) => {
+  const listeners = await Listener.find(req.query);
+  res.status(200).json({ success: true, count: listeners.length, data: listeners });
 });
 
 // @desc        Get matched listener
@@ -46,15 +56,6 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
   }
 
 });
-
-// @desc        TEST
-// @route       POST /api/v1/listeners
-// @access      Private
-// exports.selectListener = asyncHandler(async (req, res, next) => {
-//   const listeners = await Listener.find(req.query);
-//   res.status(200).json({ success: true, count: listeners.length, data: listeners });
-// });
-
 
 // @desc        Create new listener
 // @route       POST /api/v1/listeners
@@ -91,4 +92,5 @@ exports.deleteListener = asyncHandler(async (req, res, next) => {
   }
   res.status(200).json({ success: true, data: listener });
 });
+
 
