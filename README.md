@@ -42,4 +42,4 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
 
 ## DELETE
 ### /\<id\>
-* delete single Listene by ID
+* delete single Listener by ID
