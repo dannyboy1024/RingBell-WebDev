@@ -1,19 +1,22 @@
 # RingBell-WebDev
 
+base URL:
+https://ringbell-api.herokuapp.com/api/v1/listeners
+
 get all Listeners:
-GET https://ringbell-api.herokuapp.com/api/v1/listeners
+GET /
 
 get single Listener by ID:
-GET https://ringbell-api.herokuapp.com/api/v1/listeners/<id>
+GET /<id>
   
 get matched Listener:
-POST https://ringbell-api.herokuapp.com/api/v1/listeners/getMatch
+POST /getMatch
 
 create a Listener:
-POST https://ringbell-api.herokuapp.com/api/v1/listeners/
+POST /
 
 update single Listener by ID:
-PUT https://ringbell-api.herokuapp.com/api/v1/listeners/<id>
+PUT /<id>
 
 delete single Listene by ID:
-DELETE https://ringbell-api.herokuapp.com/api/v1/listeners/<id>
+DELETE /<id>
