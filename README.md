@@ -10,6 +10,7 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
 ## GET
 ### /
 * get all Listeners
+* auto update listeners' availability based on current time
 ### /\<id\>
 * get single Listener by ID
 
