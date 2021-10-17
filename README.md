@@ -1,22 +1,45 @@
-# RingBell-WebDev
+# RingBell API
 
-base URL:
+<br />
+
+## Base URL:
 https://ringbell-api.herokuapp.com/api/v1/listeners
 
-get all Listeners:
-GET /
+<br />
 
-get single Listener by ID:
-GET /<id>
+## GET
+### /
+* get all Listeners
+### /\<id\>
+* get single Listener by ID
+
+<br />
+
+## POST
+### /
+* create a Listener
+* sample body:
+  ```
+  {
+    "name": "Lio",
+    "university": "多伦多大学 University of Toronto",
+    "email": "bellringtest@gmail.com",
+    "availability": [50, 167],
+    "occupied_availability": []
+  }
+  ```
   
-get matched Listener:
-POST /getMatch
+### /getMatch
+* get matched Listener
 
-create a Listener:
-POST /
+<br />
 
-update single Listener by ID:
-PUT /<id>
+## PUT
+### /\<id\>
+* update single Listener by ID
 
-delete single Listene by ID:
-DELETE /<id>
+<br />
+
+## DELETE
+### /\<id\>
+* delete single Listene by ID
