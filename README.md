@@ -31,6 +31,13 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
   
 ### /getMatch
 * get matched Listener
+* sample body:
+  ```
+  {
+    "title": "User chosen time slots IDs",
+    "body": [1,2,3]
+  }
+  ```
 
 <br />
 
