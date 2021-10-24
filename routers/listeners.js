@@ -3,6 +3,7 @@ const express = require("express");
 const {
   getListeners,
   getListener,
+  getTimeslots,
   createListener,
   updateListener,
   deleteListener,
@@ -19,6 +20,10 @@ router
 router
   .route("/confirmMatch")
   .post(confirmMatch);
+
+router
+  .route("/timeSlots")
+  .get(getTimeslots);
 
 router
   .route("/")

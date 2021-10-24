@@ -6,8 +6,12 @@
     "name": "Dale",
     "email": "bellringtest@gmail.com",
     "university": "多伦多大学 University of Toronto",
-    "availability": [1, 21],
-    "occupied_availability": [],
+    "availability": [],
+    "occupied_availability": [
+      { "timeID": 1, "time": 1 },
+      { "timeID": 3, "time": 1 },
+      { "timeID": 5, "time": 1 }
+    ],
     "application_time": {
       "$date": "2021-10-17T05:47:49.314Z"
     },
@@ -21,8 +25,12 @@
     "name": "Kate",
     "email": "bellringtest@gmail.com",
     "university": "多伦多大学 University of Toronto",
-    "availability": [1, 2, 3],
-    "occupied_availability": [],
+    "availability": [],
+    "occupied_availability": [
+      { "timeID": 10, "time": 1 },
+      { "timeID": 30, "time": 1 },
+      { "timeID": 50, "time": 1 }
+    ],
     "application_time": {
       "$date": "2021-10-17T05:50:38.898Z"
     },
@@ -36,8 +44,8 @@
     "name": "Mike",
     "email": "bellringtest@gmail.com",
     "university": "多伦多大学 University of Toronto",
-    "availability": [1, 2, 3],
-    "occupied_availability": [],
+    "availability": [],
+    "occupied_availability": [{ "timeID": 1, "time": 1 }],
     "application_time": {
       "$date": "2021-10-17T05:50:49.778Z"
     },
@@ -51,8 +59,12 @@
     "name": "Lio",
     "email": "bellringtest@gmail.com",
     "university": "多伦多大学 University of Toronto",
-    "availability": [50, 167],
-    "occupied_availability": [],
+    "availability": [],
+    "occupied_availability": [
+      { "timeID": 50, "time": 1 },
+      { "timeID": 85, "time": 1 },
+      { "timeID": 168, "time": 1 }
+    ],
     "application_time": {
       "$date": "2021-10-17T05:50:56.115Z"
     },

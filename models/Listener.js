@@ -26,10 +26,10 @@ const ListenerSchema = new mongoose.Schema({
         default: Date.now
     },
     availability: {
-        type: [Number],
+        type: [{timeID: Number, time: Date}],
         required: [true, 'Please add avaliability'],
     },
-    occupied_availability: [Number]
+    occupied_availability: [{timeID: Number, time: Date}]
 });
 
 

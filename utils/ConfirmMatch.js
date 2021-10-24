@@ -16,9 +16,10 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     const bellringerEmail = bellRinger.email;
 
     // Modify availiability (uncomment after testing!)
-    // const index = matchedListener.availability.indexOf(timeSlot);
-    // matchedListener.availability.splice(index, 1);
-    // matchedListener.occupied_availability.push(timeSlot);
+    let index = matchedListener.availability.indexOf(timeSlot);
+    const now = new Date();
+    matchedListener.availability.splice(index, 1);
+    matchedListener.occupied_availability.push(timeSlot);
 
     // queue
     await Listener.findByIdAndDelete(matchedListener._id);
