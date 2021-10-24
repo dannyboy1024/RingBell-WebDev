@@ -39,6 +39,59 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
     "body": [1,2,3]
   }
   ```
+ * sample return value:
+   ```
+   {
+    "success": true,
+    "data": {
+        "listener": {
+            "_id": "616bb9ae4e853592c2104183",
+            "name": "Kate",
+            "slug": "kate",
+            "email": "bellringtest@gmail.com",
+            "university": "多伦多大学 University of Toronto",
+            "application_time": "2021-10-17T05:50:38.898Z",
+            "availability": [
+                1,
+                2,
+                3
+            ],
+            "occupied_availability": [],
+            "__v": 0
+        },
+        "timeSlot": 1
+    }
+   }
+   ```
+  
+### /confirmMatch
+* confirm matching a Bell-ringer with a Listener
+* note that it's easier to reuse the "listener" returned by /getMatch
+* sample body:
+  ```
+  {
+    "timeSlot": 1,
+    "listener": {
+        "_id": "616bb9b94e853592c2104185",
+        "name": "Mike",
+        "slug": "mike",
+        "email": "ringbell.test@gmail.com",
+        "university": "多伦多大学 University of Toronto",
+        "application_time": "2021-10-17T05:50:49.778Z",
+        "availability": [
+            2,
+            3,
+            1
+        ],
+        "occupied_availability": [],
+        "__v": 0
+    },
+    "bellRinger": {
+        "email": "ringbell.test@gmail.com",
+        "name": "John"
+    }
+  }
+  ```
 
 <br />
 
