@@ -35,7 +35,6 @@ const ListenerSchema = new mongoose.Schema({
 
 // Create Listener slug from the name
 ListenerSchema.pre('save', function (next) {
-    console.log('Slugify ran', this.name);
     this.slug = slugify(this.name, { lower: true });
     next();
 })

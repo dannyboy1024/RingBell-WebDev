@@ -3,25 +3,28 @@ const express = require("express");
 const {
   getListeners,
   getListener,
-  getMatchListener,
   createListener,
   updateListener,
   deleteListener,
-  test
+  getMatchListener,
+  confirmMatch
 } = require("../controllers/listeners");
 
 const router = express.Router();
 
 router
-    .route("/getMatch")
-    .post(getMatchListener);
-    // .get(test);
-    
+  .route("/getMatch")
+  .post(getMatchListener);
+
+router
+  .route("/confirmMatch")
+  .post(confirmMatch);
+
 router
   .route("/")
   .get(getListeners)
   .post(createListener);
-  
+
 
 router
   .route("/:id")

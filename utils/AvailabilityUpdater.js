@@ -6,7 +6,7 @@ const AvailabilityUpdater = async (listeners) => {
     const current_hour = now.getHours();
     const current_timeID = current_day * 24 + current_hour;
 
-    console.log("Current time ID: " + current_timeID);
+    console.log("-> Current time ID: " + current_timeID);
 
     for (var listener of listeners) {
         var listener_needs_update = false;
@@ -19,7 +19,7 @@ const AvailabilityUpdater = async (listeners) => {
             }
         }
         if (listener_needs_update) {
-            console.log("Updated availability for " + listener.name + ".");
+            console.log("   Updated availability for " + listener.name + ".");
             await Listener.findByIdAndUpdate(listener._id, listener, {
                 new: true,
                 runValidators: true

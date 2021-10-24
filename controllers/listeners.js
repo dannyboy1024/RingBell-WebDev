@@ -1,5 +1,7 @@
 const ErrorResponse = require('../utils/errorResponse');
 const ListenerMatcher = require('../utils/ListenerMatcher');
+const ConfirmMatch = require("../utils/ConfirmMatch");
+
 const Listener = require('../models/Listener');
 const asyncHandler = require('../middleware/async');
 const availabilityUpdater = require("../utils/AvailabilityUpdater");
@@ -33,28 +35,33 @@ exports.getTimeslots = asyncHandler(async (req, res, next) => {
 });
 
 // @desc        Get matched listener
-// @route       POST /api/v1/listeners
+// @route       POST /api/v1/listeners/getMatch
 // @access      Private
 exports.getMatchListener = asyncHandler(async (req, res, next) => {
-  // const listeners = await Listener.create(req.body);
   const timeSlots = req.body;
   const listeners = await Listener.find(req.query);
   const listenerMatcher = new ListenerMatcher(timeSlots.body, listeners);
 
-  // queue (may be better to put in a seprate "confirm selection" request)
   const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
 
   if (matchedListener == 404) {
     return next(new ErrorResponse(`No listener is avaliable at given time slots`, 404));
   } else {
-    await Listener.findByIdAndDelete(matchedListener._id);
-    await Listener.create(matchedListener);
     res.status(200).json({
       success: true,
       data: matchedListener
     });
   }
+});
 
+// @desc        Confirm matching with listener and timeslot
+// @route       POST /api/v1/listeners/confirmMatch
+// @access      Private
+exports.confirmMatch = asyncHandler(async (req, res, next) => {
+  const { timeSlot, listener, bellRinger } = req.body;
+  // modify availability in db + send email
+  ConfirmMatch(timeSlot, listener, bellRinger);
+  res.status(200).json({ success: true, data: listener });
 });
 
 // @desc        Create new listener

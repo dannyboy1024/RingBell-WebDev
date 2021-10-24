@@ -1,4 +1,3 @@
-
 class ListenerMatcher {
 
     constructor(slots, listeners) {
@@ -26,11 +25,8 @@ class ListenerMatcher {
         }
 
         if (matchedListener) {
-            // update availability
-            const index = matchedListener.availability.indexOf(chosenSlot);
-            matchedListener.availability.splice(index, 1);
-            matchedListener.occupied_availability.push(chosenSlot);
-            return matchedListener;
+            const matchedResult = {listener: matchedListener, timeSlot: chosenSlot}
+            return matchedResult;
         } else {
             return 404;
         }
