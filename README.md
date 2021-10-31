@@ -81,7 +81,11 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
             "occupied_availability": [],
             "__v": 0
         },
-        "timeSlot": 1
+        "timeSlot": {
+            "timeID": 4,
+            "time": "2021-11-24T09:00:00.000Z",
+            "_id": "6175cc0109a56ef948e07b75"
+        }
     }
    }
    ```
@@ -92,7 +96,11 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
 * sample body:
   ```
   {
-    "timeSlot": 1,
+    "timeSlot": {
+            "timeID": 4,
+            "time": "2021-11-24T09:00:00.000Z",
+            "_id": "6175cc0109a56ef948e07b75"
+        },
     "listener": {
         "_id": "616bb9b94e853592c2104185",
         "name": "Mike",
