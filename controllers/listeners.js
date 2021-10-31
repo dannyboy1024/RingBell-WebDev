@@ -34,8 +34,7 @@ exports.getListener = asyncHandler(async (req, res, next) => {
 // @access      Private
 exports.getTimeslots = asyncHandler(async (req, res, next) => {
   const listeners = await Listener.find(req.query);
-  availabilityUpdater(listeners);
-  res.status(200).json({ success: true, count: listeners.length, data: getTimeslotsFromListeners(listeners) });
+  res.status(200).json({ success: true, data: getTimeslotsFromListeners(listeners)});
 });
 
 // @desc        Get matched listener
