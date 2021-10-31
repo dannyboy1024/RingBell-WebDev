@@ -15,7 +15,7 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
 * get single Listener by ID
 ### /timeSlots
 * get an array of all available time slots
-* sample body:
+* sample return value:
   ```
   {
    {
