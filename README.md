@@ -13,6 +13,28 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
 * auto update listeners' availability based on current time (WIP)
 ### /\<id\>
 * get single Listener by ID
+### /timeSlots
+* get an array of all available time slots
+* sample body:
+  ```
+  {
+   {
+    "success": true,
+    "data": [
+        {
+            "timeID": 4,
+            "time": "2021-11-24T09:00:00.000Z",
+            "_id": "6175cc0109a56ef948e07b75"
+        },
+        {
+            "timeID": 1,
+            "time": "2021-11-24T06:00:00.000Z",
+            "_id": "6175cc0109a56ef948e07b76"
+        }
+   }
+  }
+  ```
+
 
 <br />
 
