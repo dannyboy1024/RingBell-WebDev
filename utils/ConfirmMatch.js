@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 const Listener = require('../models/Listener');
-const TimeTools = require('./TimeTools');
+const {getNextAvailability, getDateDisplay} = require('./TimeTools');
 const nodemailer = require("nodemailer");
 
 const EmailConfirm = require("./EmailConfirm");
@@ -15,16 +15,20 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     const listenerEmail = matchedListener.email;
     const bellringerName = bellRinger.name;
     const bellringerEmail = bellRinger.email;
+    const time = new Date(timeSlot.time.$date);
+    const displayedTime = getDateDisplay(time);
+    console.log(displayedTime);
 
     // Modify availiability (uncomment after testing!)
+
     let index = matchedListener.availability.indexOf(timeSlot);
     const nextTimeSlot = getNextAvailability(timeSlot);
-    matchedListener.availability.splice(index, 1);
-    matchedListener.occupied_availability.push(nextTimeSlot);
+    // matchedListener.availability.splice(index, 1);
+    // matchedListener.occupied_availability.push(nextTimeSlot);
 
     // queue
-    await Listener.findByIdAndDelete(matchedListener._id);
-    await Listener.create(matchedListener);
+    // await Listener.findByIdAndDelete(matchedListener._id);
+    // await Listener.create(matchedListener);
 
     // create sender
     let transport = {
@@ -44,7 +48,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
 
 
     // create email
-    const emailConfirm = new EmailConfirm(listenerName, listenerEmail, bellringerName, bellringerEmail);
+    const emailConfirm = new EmailConfirm(listenerName, listenerEmail, bellringerName, bellringerEmail, displayedTime);
 
     let listenerMsg = {
         from: '"Ringbell"<noreply@ringbell.com>', // sender address
