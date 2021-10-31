@@ -16,9 +16,23 @@ exports.isPassedOccupancy = (occupancy) => {
 
 exports.getNextAvailability = (timeSlot) => {
     const {timeID} = timeSlot;
-    // const nextDate = time.setDate(time.getDate() + 7);
+    const nextDate = time.setDate(time.getDate() + 7);
 
-    const now = new Date();
-    const nextDate = new Date(2021, 10, (now.getDate()+(timeID/24)), (timeID%24), 0, 0, 0);
+    // const now = new Date();
+    // const nextDate = new Date(2021, 10, (now.getDate()+(timeID/24)), (timeID%24), 0, 0, 0);
     return {timeID: timeID, time: nextDate};
+}
+
+exports.getTimeslotsFromListeners = (listeners) => {
+    var timeSlots = [];
+    var timeIDs = [];
+    for (const listener of listeners){
+        for (const timeSlot of listener.availability){
+            if (!timeIDs.includes(timeSlot.timeID)){
+                timeIDs.push(timeSlot.timeID);
+                timeSlots.push(timeSlot);
+            }
+        }
+    }
+    return timeSlots;
 }

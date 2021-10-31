@@ -1,10 +1,13 @@
+const Listener = require('../models/Listener');
+const asyncHandler = require('../middleware/async');
+
 const ErrorResponse = require('../utils/errorResponse');
 const ListenerMatcher = require('../utils/ListenerMatcher');
 const ConfirmMatch = require("../utils/ConfirmMatch");
-
-const Listener = require('../models/Listener');
-const asyncHandler = require('../middleware/async');
 const availabilityUpdater = require("../utils/AvailabilityUpdater");
+const {getTimeslotsFromListeners} = require('../utils/TimeTools');
+
+
 
 // @desc        Get all listeners
 // @route       GET /api/v1/listeners
@@ -32,7 +35,7 @@ exports.getListener = asyncHandler(async (req, res, next) => {
 exports.getTimeslots = asyncHandler(async (req, res, next) => {
   const listeners = await Listener.find(req.query);
   availabilityUpdater(listeners);
-  res.status(200).json({ success: true, count: listeners.length, data: listeners });
+  res.status(200).json({ success: true, count: listeners.length, data: getTimeslotsFromListeners(listeners) });
 });
 
 // @desc        Get matched listener

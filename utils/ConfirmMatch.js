@@ -1,5 +1,6 @@
 const dotenv = require("dotenv");
 const Listener = require('../models/Listener');
+const TimeTools = require('./TimeTools');
 const nodemailer = require("nodemailer");
 
 const EmailConfirm = require("./EmailConfirm");
@@ -17,9 +18,9 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
 
     // Modify availiability (uncomment after testing!)
     let index = matchedListener.availability.indexOf(timeSlot);
-    const now = new Date();
+    const nextTimeSlot = getNextAvailability(timeSlot);
     matchedListener.availability.splice(index, 1);
-    matchedListener.occupied_availability.push(timeSlot);
+    matchedListener.occupied_availability.push(nextTimeSlot);
 
     // queue
     await Listener.findByIdAndDelete(matchedListener._id);

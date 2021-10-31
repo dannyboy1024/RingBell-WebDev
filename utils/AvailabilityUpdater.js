@@ -10,8 +10,7 @@ const AvailabilityUpdater = async (listeners) => {
                 listener_needs_update = true;
                 const index = listener.occupied_availability.indexOf(timeSlot);
                 listener.occupied_availability.splice(index, 1);
-                getNextAvailability(timeSlot);
-                listener.availability.push(getNextAvailability(timeSlot));
+                listener.availability.push(timeSlot);
             }
         }
         if (listener_needs_update) {
