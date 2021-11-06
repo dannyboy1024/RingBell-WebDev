@@ -18,7 +18,6 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
 * sample return value:
   ```
   {
-   {
     "success": true,
     "data": [
         {
@@ -30,8 +29,18 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
             "timeID": 1,
             "time": "2021-11-24T06:00:00.000Z",
             "_id": "6175cc0109a56ef948e07b76"
+        },
+        {
+            "timeID": 2,
+            "time": "2021-11-24T07:00:00.000Z",
+            "_id": "6175cc0409a56ef948e07b9e"
+        },
+        {
+            "timeID": 3,
+            "time": "2021-11-24T08:00:00.000Z",
+            "_id": "6175cc0509a56ef948e07bc1"
         }
-   }
+    ]
   }
   ```
 
@@ -97,23 +106,37 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
   ```
   {
     "timeSlot": {
-            "timeID": 4,
-            "time": "2021-11-24T09:00:00.000Z",
-            "_id": "6175cc0109a56ef948e07b75"
-        },
+                "timeID": 1,
+                "time": {
+                    "$date": "2021-11-24T06:00:00.000Z"
+                },
+                "_id": {
+                    "$oid": "6175cc0109a56ef948e07b86"
+                }
+            },
     "listener": {
-        "_id": "616bb9b94e853592c2104185",
+        "_id": {
+            "$oid": "616bb9b94e853592c2104185"
+        },
         "name": "Mike",
-        "slug": "mike",
         "email": "ringbell.test@gmail.com",
         "university": "多伦多大学 University of Toronto",
-        "application_time": "2021-10-17T05:50:49.778Z",
         "availability": [
-            2,
-            3,
-            1
+            {
+                "timeID": 1,
+                "time": {
+                    "$date": "2021-11-24T06:00:00.000Z"
+                },
+                "_id": {
+                    "$oid": "6175cc0109a56ef948e07b86"
+                }
+            }
         ],
         "occupied_availability": [],
+        "application_time": {
+            "$date": "2021-10-17T05:50:49.778Z"
+        },
+        "slug": "mike",
         "__v": 0
     },
     "bellRinger": {
