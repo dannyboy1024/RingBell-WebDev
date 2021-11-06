@@ -16,7 +16,7 @@ class ListenerMatcher {
                 for (let availability of listener.availability){
                     console.log(availability);
                     if (availability.timeID == slot){
-                        chosenSlot = slot;
+                        chosenSlot = availability;
                         matchedListener = listener;
                         break;
                     }
@@ -28,7 +28,6 @@ class ListenerMatcher {
 
         if (matchedListener) {
             const matchedResult = {listener: matchedListener, timeSlot: chosenSlot}
-            console.log(matchedResult);
             return matchedResult;
         } else {
             return 404;
