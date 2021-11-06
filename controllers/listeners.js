@@ -65,9 +65,8 @@ exports.confirmMatch = asyncHandler(async (req, res, next) => {
   console.log(timeSlot);
   console.log(listener);
   console.log(bellRinger);
-
-  // ConfirmMatch(timeSlot, listener, bellRinger);
-  res.status(200).json({ success: true, data: "listener" });
+  ConfirmMatch(timeSlot, listener, bellRinger);
+  res.status(200).json({ success: true, data: listener });
 });
 
 // @desc        Create new listener
