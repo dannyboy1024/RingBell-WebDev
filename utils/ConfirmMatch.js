@@ -15,7 +15,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     const listenerEmail = matchedListener.email;
     const bellringerName = bellRinger.name;
     const bellringerEmail = bellRinger.email;
-    const time = new Date(timeSlot.time.$date);
+    const time = new Date(timeSlot.time);
     const displayedTime = getDateDisplay(time);
     console.log(displayedTime);
 
@@ -27,7 +27,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     // matchedListener.occupied_availability.push(nextTimeSlot);
 
     // queue
-    
+
     // await Listener.findByIdAndDelete(matchedListener._id);
     // await Listener.create(matchedListener);
 
