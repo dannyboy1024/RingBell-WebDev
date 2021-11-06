@@ -56,7 +56,7 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
         "email": "ringbell.test@gmail.com",
         "name": "John"
     }
-}
+  }
   ```
 
 
