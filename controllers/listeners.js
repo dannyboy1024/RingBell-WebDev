@@ -62,7 +62,7 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
 // @access      Private
 exports.confirmMatch = asyncHandler(async (req, res, next) => {
   const { timeSlot, listener, bellRinger } = req.body;
-  // modify availability in db + send email
+  console.log(req);
   ConfirmMatch(timeSlot, listener, bellRinger);
   res.status(200).json({ success: true, data: listener });
 });
