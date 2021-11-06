@@ -18,21 +18,45 @@ https://ringbell-api.herokuapp.com/api/v1/listeners
 * sample return value:
   ```
   {
-   {
-    "success": true,
-    "data": [
-        {
-            "timeID": 4,
-            "time": "2021-11-24T09:00:00.000Z",
-            "_id": "6175cc0109a56ef948e07b75"
+    "timeSlot": {
+                "timeID": 1,
+                "time": {
+                    "$date": "2021-11-24T06:00:00.000Z"
+                },
+                "_id": {
+                    "$oid": "6175cc0109a56ef948e07b86"
+                }
+            },
+    "listener": {
+        "_id": {
+            "$oid": "616bb9b94e853592c2104185"
         },
-        {
-            "timeID": 1,
-            "time": "2021-11-24T06:00:00.000Z",
-            "_id": "6175cc0109a56ef948e07b76"
-        }
-   }
-  }
+        "name": "Mike",
+        "email": "ringbell.test@gmail.com",
+        "university": "多伦多大学 University of Toronto",
+        "availability": [
+            {
+                "timeID": 1,
+                "time": {
+                    "$date": "2021-11-24T06:00:00.000Z"
+                },
+                "_id": {
+                    "$oid": "6175cc0109a56ef948e07b86"
+                }
+            }
+        ],
+        "occupied_availability": [],
+        "application_time": {
+            "$date": "2021-10-17T05:50:49.778Z"
+        },
+        "slug": "mike",
+        "__v": 0
+    },
+    "bellRinger": {
+        "email": "ringbell.test@gmail.com",
+        "name": "John"
+    }
+}
   ```
 
 
