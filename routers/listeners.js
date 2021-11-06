@@ -30,7 +30,6 @@ router
   .get(getListeners)
   .post(createListener);
 
-
 router
   .route("/:id")
   .get(getListener)
