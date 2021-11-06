@@ -61,7 +61,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
 
     let bellringerMsg = {
         from: '"Ringbell"<noreply@ringbell.com>', // sender address
-        to: listenerEmail, // list of receivers
+        to: bellringerEmail, // list of receivers
         subject: "Confirmation for Listener Matching", // Subject line
         text: "hello",
         html: emailConfirm.bellringerHTML()
