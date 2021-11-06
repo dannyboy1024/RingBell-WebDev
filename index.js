@@ -23,9 +23,9 @@ app.use(CROS_handeler);
 
 // Body parser
 app.use(express.json());
-const bodyParser = require('body-parser');
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.json()); // for parsing application/json
+// app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
 // Dev logging Middleware (only run in dev env)
