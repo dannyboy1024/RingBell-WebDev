@@ -8,7 +8,7 @@ class EmailConfirm {
         this.time = time;
     }
 
-    listenerHTML = () => {
+    bellringerHTML = () => {
         const { listenerName, listenerEmail, bellringerName, bellringerEmail, time } = this;
         return (
             `<p><span style="font-weight: 400;"> 亲爱的 ${bellringerName}，你好 </span></p>
@@ -38,7 +38,7 @@ class EmailConfirm {
         );
     }
 
-    bellringerHTML = () => {
+    listenerHTML = () => {
         const { listenerName, listenerEmail, bellringerName, bellringerEmail, time } = this;
         return (
             `<p><span style="font-weight: 400;">亲爱的 ${listenerName}， 我们已成功为您匹配到摇铃人 ${bellringerName}</span></p>
