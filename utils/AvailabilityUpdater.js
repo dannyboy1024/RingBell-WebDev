@@ -2,6 +2,8 @@ const Listener = require('../models/Listener');
 const TimeTools = require('./TimeTools');
 const { getCurrentTimeID, isPassedOccupancy, getNextAvailability } = require('./TimeTools');
 
+// Outdated, unused for now
+
 const AvailabilityUpdater = async (listeners) => {
     for (let listener of listeners) {
         var listener_needs_update = false;

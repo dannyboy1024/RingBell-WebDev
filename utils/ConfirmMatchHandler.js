@@ -3,7 +3,7 @@ const Listener = require('../models/Listener');
 const {getNextAvailability, getDateDisplay} = require('./TimeTools');
 const nodemailer = require("nodemailer");
 
-const EmailConfirm = require("./EmailConfirm");
+const EmailConfirm = require("./EmailHandler");
 
 
 const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
@@ -15,21 +15,16 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     const listenerEmail = matchedListener.email;
     const bellringerName = bellRinger.name;
     const bellringerEmail = bellRinger.email;
-    const time = new Date(timeSlot.time);
+    const time = new Date(timeSlot);
     const displayedTime = getDateDisplay(time);
-    console.log(displayedTime);
+    console.log(displayedTime); 
 
     // Modify availiability (uncomment after testing!)
-
-    let index = matchedListener.availability.indexOf(timeSlot);
-    const nextTimeSlot = getNextAvailability(timeSlot);
-    // matchedListener.availability.splice(index, 1);
-    // matchedListener.occupied_availability.push(nextTimeSlot);
+    matchedListener.occupied_availability.push(time);
 
     // queue
-
-    // await Listener.findByIdAndDelete(matchedListener._id);
-    // await Listener.create(matchedListener);
+    await Listener.findByIdAndDelete(matchedListener._id);
+    await Listener.create(matchedListener);
 
     // create sender
     let transport = {
@@ -68,19 +63,19 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     }
 
     // send
-    transporter.sendMail(listenerMsg, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log("-> Email successfully sent to listener!");
-    });
+    // transporter.sendMail(listenerMsg, (error, info) => {
+    //     if (error) {
+    //         return console.log(error);
+    //     }
+    //     console.log("-> Email successfully sent to listener!");
+    // });
 
-    transporter.sendMail(bellringerMsg, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log("-> Email successfully sent to bellringer!");
-    });
+    // transporter.sendMail(bellringerMsg, (error, info) => {
+    //     if (error) {
+    //         return console.log(error);
+    //     }
+    //     console.log("-> Email successfully sent to bellringer!");
+    // });
 
 }
 

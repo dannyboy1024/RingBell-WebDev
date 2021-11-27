@@ -2,9 +2,10 @@ const Listener = require('../models/Listener');
 const asyncHandler = require('../middleware/async');
 
 const ErrorResponse = require('../utils/errorResponse');
-const ListenerMatcher = require('../utils/ListenerMatcher');
-const ConfirmMatch = require("../utils/ConfirmMatch");
+const ListenerMatcher = require('../utils/GetMatchHandler');
+const ConfirmMatch = require("../utils/ConfirmMatchHandler");
 const availabilityUpdater = require("../utils/AvailabilityUpdater");
+const GetTimeslotsHandler = require("../utils/GetTimeslotsHandler");
 const {getTimeslotsFromListeners} = require('../utils/TimeTools');
 
 
@@ -27,44 +28,6 @@ exports.getListener = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Listener not found with id of ${req.params.id}`, 404));
   }
   res.status(200).json({ success: true, data: listener });
-});
-
-// @desc        get all timeslots
-// @route       POST /api/v1/listeners
-// @access      Private
-exports.getTimeslots = asyncHandler(async (req, res, next) => {
-  const listeners = await Listener.find(req.query);
-  res.status(200).json({ success: true, data: getTimeslotsFromListeners(listeners)});
-});
-
-// @desc        Get matched listener
-// @route       POST /api/v1/listeners/getMatch
-// @access      Private
-exports.getMatchListener = asyncHandler(async (req, res, next) => {
-  const timeSlots = req.body;
-  const listeners = await Listener.find(req.query);
-  const listenerMatcher = new ListenerMatcher(timeSlots.body, listeners);
-
-  const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
-
-  if (matchedListener == 404) {
-    return next(new ErrorResponse(`No listener is avaliable at given time slots`, 404));
-  } else {
-    res.status(200).json({
-      success: true,
-      data: matchedListener
-    });
-  }
-});
-
-// @desc        Confirm matching with listener and timeslot
-// @route       POST /api/v1/listeners/confirmMatch
-// @access      Private
-exports.confirmMatch = asyncHandler(async (req, res, next) => {
-  const { timeSlot, listener, bellRinger } = req.body.body;
-  console.log(req.body.body);
-  ConfirmMatch(timeSlot, listener, bellRinger);
-  res.status(200).json({ success: true, data: "listener" });
 });
 
 // @desc        Create new listener
@@ -103,4 +66,55 @@ exports.deleteListener = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: listener });
 });
 
+// ===================================== Get Time Slots =========================================
+
+
+// @desc        get all timeslots
+// @route       POST /api/v1/timeSlots
+// @access      Private
+exports.getTimeslots = asyncHandler(async (req, res, next) => {
+  const listeners = await Listener.find(req.query);
+  res.status(200).json({ success: true, data: getTimeslotsFromListeners(listeners)});
+});
+
+// @desc        get all timeslots in week
+// @route       POST /api/v1/timeSlotsInWeek
+// @access      Private
+exports.getTimeSlotsInWeek = asyncHandler(async (req, res, next) => {
+  const listeners = await Listener.find(req.query);
+  let getTimeSlotsHandler = new GetTimeslotsHandler(listeners);
+  res.status(200).json({ success: true, data: getTimeSlotsHandler.getTimeslotsInWeek()});
+});
+
+// ===================================== Get Match =========================================
+
+// @desc        Get matched listener
+// @route       POST /api/v1/listeners/getMatch
+// @access      Private
+exports.getMatchListener = asyncHandler(async (req, res, next) => {
+  const timeSlots = req.body;
+  const listeners = await Listener.find(req.query);
+  const listenerMatcher = new ListenerMatcher(timeSlots.body, listeners);
+
+  const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
+
+  if (matchedListener == 404) {
+    return next(new ErrorResponse(`No listener is avaliable at given time slots`, 404));
+  } else {
+    res.status(200).json({
+      success: true,
+      data: matchedListener
+    });
+  }
+});
+
+// @desc        Confirm matching with listener and timeslot
+// @route       POST /api/v1/listeners/confirmMatch
+// @access      Private
+exports.confirmMatch = asyncHandler(async (req, res, next) => {
+  const { timeSlot, listener, bellRinger } = req.body.body;
+  console.log(req.body.body);
+  ConfirmMatch(timeSlot, listener, bellRinger);
+  res.status(200).json({ success: true, data: "listener" });
+});
 

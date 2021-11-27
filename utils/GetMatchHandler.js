@@ -1,22 +1,28 @@
 class ListenerMatcher {
 
-    constructor(slots, listeners) {
-        this.slots = [...slots];
+    constructor(choices, listeners) {
+        this.choices = [...choices];
         this.listeners = [...listeners];
     }
 
     getMatchedListener() {
         // get avaliable listeners
-        const { slots } = this;
+        const { choices,listeners } = this;
+        console.log(choices);
         var chosenSlot = null;
         var matchedListener = null;
 
-        for (const listener of this.listeners){
-            for (let slot of slots) {
-                for (let availability of listener.availability){
-                    console.log(availability);
-                    if (availability.timeID == slot){
-                        chosenSlot = availability;
+        for (const listener of listeners){
+            for (let choice of choices) {
+                choice = new Date(choice.date);
+                for (let seed of listener.availability){
+                    let seedDay = seed.day_in_week;
+                    let seedHour = seed.hour;
+                    let choiceDay = choice.getDay();
+                    let choiceHours = choice.getHours();
+
+                    if (seedDay == choiceDay && seedHour == choiceHours){
+                        chosenSlot = choice;
                         matchedListener = listener;
                         break;
                     }

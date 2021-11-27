@@ -8,10 +8,13 @@ const {
   updateListener,
   deleteListener,
   getMatchListener,
-  confirmMatch
+  confirmMatch,
+  getTimeSlotsInWeek
 } = require("../controllers/listeners");
 
 const router = express.Router();
+
+// ===================================== Get Match =========================================
 
 router
   .route("/getMatch")
@@ -21,9 +24,18 @@ router
   .route("/confirmMatch")
   .post(confirmMatch);
 
+
+// ===================================== Get Time Slots =========================================
+
 router
   .route("/timeSlots")
   .get(getTimeslots);
+
+router
+  .route("/timeSlotsInWeek")
+  .get(getTimeSlotsInWeek);
+
+// ===================================== Basic CRUD =========================================
 
 router
   .route("/")
