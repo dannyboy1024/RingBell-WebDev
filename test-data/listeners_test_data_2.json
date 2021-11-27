@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Leon",
+    "email": "bellring.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [
+      { "day_in_week": "3", "hour": "11" },
+      { "day_in_week": "4", "hour": "9" },
+      { "day_in_week": "6", "hour": "22" }
+    ],
+    "occupied_availability": [],
+    "slug": "leon",
+    "__v": 0
+  }
+]

@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 const Listener = require('../models/Listener');
-const {getNextAvailability, getDateDisplay} = require('./TimeTools');
+const { getNextAvailability, getDateDisplay } = require('./TimeTools');
 const nodemailer = require("nodemailer");
 
 const EmailConfirm = require("./EmailHandler");
@@ -17,12 +17,10 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     const bellringerEmail = bellRinger.email;
     const time = new Date(timeSlot);
     const displayedTime = getDateDisplay(time);
-    console.log(displayedTime); 
+    console.log(displayedTime);
 
-    // Modify availiability (uncomment after testing!)
+    // Modify availiability & queue
     matchedListener.occupied_availability.push(time);
-
-    // queue
     await Listener.findByIdAndDelete(matchedListener._id);
     await Listener.create(matchedListener);
 
@@ -63,19 +61,19 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     }
 
     // send
-    // transporter.sendMail(listenerMsg, (error, info) => {
-    //     if (error) {
-    //         return console.log(error);
-    //     }
-    //     console.log("-> Email successfully sent to listener!");
-    // });
+    transporter.sendMail(listenerMsg, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log("-> Email successfully sent to listener!");
+    });
 
-    // transporter.sendMail(bellringerMsg, (error, info) => {
-    //     if (error) {
-    //         return console.log(error);
-    //     }
-    //     console.log("-> Email successfully sent to bellringer!");
-    // });
+    transporter.sendMail(bellringerMsg, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log("-> Email successfully sent to bellringer!");
+    });
 
 }
 

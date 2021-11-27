@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Chris",
+    "email": "ringbell.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [{ "day_in_week": "0", "hour": "10" }],
+    "occupied_availability": [],
+    "slug": "chris",
+    "__v": 0
+  },
+  {
+    "name": "Ada",
+    "email": "ringbell.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [
+      { "day_in_week": "1", "hour": "5" },
+      { "day_in_week": "2", "hour": "9" }
+    ],
+    "occupied_availability": [],
+    "slug": "ada",
+    "__v": 0
+  },
+  {
+    "name": "Claire",
+    "email": "ringbell.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [{ "day_in_week": "6", "hour": "22" }],
+    "occupied_availability": [],
+    "slug": "claire",
+    "__v": 0
+  },
+  {
+    "name": "Leon",
+    "email": "ringbell.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [
+      { "day_in_week": "3", "hour": "11" },
+      { "day_in_week": "4", "hour": "9" },
+      { "day_in_week": "6", "hour": "22" }
+    ],
+    "occupied_availability": [],
+    "slug": "leon",
+    "__v": 0
+  },
+  {
+    "name": "Sherry",
+    "email": "ringbell.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [
+      { "day_in_week": "4", "hour": "9" },
+      { "day_in_week": "5", "hour": "11" },
+      { "day_in_week": "5", "hour": "22" }
+    ],
+    "occupied_availability": [],
+    "slug": "sherry",
+    "__v": 0
+  },
+  {
+    "name": "Carlos",
+    "email": "ringbell.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [
+      { "day_in_week": "0", "hour": "15" },
+      { "day_in_week": "1", "hour": "15" },
+      { "day_in_week": "2", "hour": "15" }
+    ],
+    "occupied_availability": [],
+    "slug": "carlos",
+    "__v": 0
+  },
+  {
+    "name": "Jack",
+    "email": "ringbell.test@gmail.com",
+    "university": "多伦多大学 University of Toronto",
+    "availability": [
+      { "day_in_week": "0", "hour": "0" },
+      { "day_in_week": "6", "hour": "23" }
+    ],
+    "occupied_availability": [],
+    "slug": "jack",
+    "__v": 0
+  }
+]

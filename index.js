@@ -14,6 +14,7 @@ connectDB();
 
 // Route files
 const listeners = require("./routers/listeners");
+const devTools = require("./routers/dev");
 const { propfind } = require("./routers/listeners");
 
 const app = express();
@@ -35,6 +36,7 @@ if (process.env.NODE_ENV === "development") {
 
 // Mount routers
 app.use("/api/v1/listeners", listeners);
+app.use("/api/v1/dev", devTools);
 app.use("/", (req, res, next) => {
   res.send("Welcome to RingBell API");
   next();

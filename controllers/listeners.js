@@ -6,7 +6,7 @@ const ListenerMatcher = require('../utils/GetMatchHandler');
 const ConfirmMatch = require("../utils/ConfirmMatchHandler");
 const availabilityUpdater = require("../utils/AvailabilityUpdater");
 const GetTimeslotsHandler = require("../utils/GetTimeslotsHandler");
-const {getTimeslotsFromListeners} = require('../utils/TimeTools');
+const { getTimeslotsFromListeners } = require('../utils/TimeTools');
 
 
 
@@ -69,12 +69,13 @@ exports.deleteListener = asyncHandler(async (req, res, next) => {
 // ===================================== Get Time Slots =========================================
 
 
-// @desc        get all timeslots
+// @desc        get all timeslots (timeID array)
 // @route       POST /api/v1/timeSlots
 // @access      Private
 exports.getTimeslots = asyncHandler(async (req, res, next) => {
   const listeners = await Listener.find(req.query);
-  res.status(200).json({ success: true, data: getTimeslotsFromListeners(listeners)});
+  let getTimeSlotsHandler = new GetTimeslotsHandler(listeners);
+  res.status(200).json({ success: true, data: getTimeSlotsHandler.getTimeslots() });
 });
 
 // @desc        get all timeslots in week
@@ -83,7 +84,7 @@ exports.getTimeslots = asyncHandler(async (req, res, next) => {
 exports.getTimeSlotsInWeek = asyncHandler(async (req, res, next) => {
   const listeners = await Listener.find(req.query);
   let getTimeSlotsHandler = new GetTimeslotsHandler(listeners);
-  res.status(200).json({ success: true, data: getTimeSlotsHandler.getTimeslotsInWeek()});
+  res.status(200).json({ success: true, data: getTimeSlotsHandler.getTimeslotsInWeek() });
 });
 
 // ===================================== Get Match =========================================
@@ -98,7 +99,7 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
 
   const matchedListener = JSON.parse(JSON.stringify(listenerMatcher.getMatchedListener()));
 
-  if (matchedListener == 404) {
+  if (matchedListener === 404) {
     return next(new ErrorResponse(`No listener is avaliable at given time slots`, 404));
   } else {
     res.status(200).json({
@@ -115,6 +116,6 @@ exports.confirmMatch = asyncHandler(async (req, res, next) => {
   const { timeSlot, listener, bellRinger } = req.body.body;
   console.log(req.body.body);
   ConfirmMatch(timeSlot, listener, bellRinger);
-  res.status(200).json({ success: true, data: "listener" });
+  res.status(200).json({ success: true, data: { timeSlot, listener, bellRinger } });
 });
 

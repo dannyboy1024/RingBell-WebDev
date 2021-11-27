@@ -56,7 +56,7 @@ class EmailConfirm {
             </ul>
             <ul>
             <li><strong>邮箱: ${bellringerEmail}</strong></li>
-            </ul> a
+            </ul>
             <ul>
             <li><strong>解聆话题: @X</strong></li>
             </ul>

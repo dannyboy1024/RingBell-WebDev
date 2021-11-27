@@ -21,9 +21,18 @@ const ListenerSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a university']
     },
-    availability: {
-        type: [{day_in_week: Number, hour: Number}]
-    },
+    availability: [{
+        day_in_week: {
+            type: Number,
+            min: [0, 'Day in week cannot < 0'],
+            max: [6, 'Day in week cannot > 6']
+        },
+        hour: {
+            type: Number,
+            min: [0, 'Hour cannot < 0'],
+            max: [23, 'Hour cannot > 23']
+        }
+    }],
     occupied_availability: [Date]
 });
 
