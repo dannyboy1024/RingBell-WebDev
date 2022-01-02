@@ -12,8 +12,6 @@ class ListenerMatcher {
         var chosenSlot = null;
         var matchedListener = null;
 
-        console.log(choices);
-
         for (const listener of listeners) {
             for (let choice of choices) {
                 choice = new Date(choice.date);
@@ -23,8 +21,6 @@ class ListenerMatcher {
                     let seedHour = seed.hour;
                     let choiceDay = choice.getDay();
                     let choiceHours = choice.getHours();
-
-                    console.log(seedDay + ", " + seedHour + "; " + choiceDay + ", " + choiceHours);
 
                     if (seedDay == choiceDay && seedHour == choiceHours) {
                         chosenSlot = choice;
@@ -39,8 +35,10 @@ class ListenerMatcher {
 
         if (matchedListener) {
             const matchedResult = { listener: matchedListener, timeSlot: chosenSlot }
+            console.log("Match success")
             return matchedResult;
         } else {
+            console.log("Match failed")
             return 404;
         }
     }
