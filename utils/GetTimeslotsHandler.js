@@ -69,9 +69,7 @@ class GetTimeslotsHandler {
                     let seedDay = seed.day_in_week;
                     let seedHour = seed.hour;
                     let days_after_today = (seedDay > nowDay) ? (seedDay - nowDay) : (7 - nowDay + seedDay);
-                    // console.log("seedDay: " + seedDay);
-                    // console.log("nowDay: " + nowDay);
-                    // console.log("days_after_today: " + days_after_today);
+
                     // create timeslot
                     let cur_timeslot = new Date(now.setDate(now.getDate() + days_after_today));
                     cur_timeslot.setHours(seedHour);
@@ -80,7 +78,6 @@ class GetTimeslotsHandler {
                     cur_timeslot.setUTCMilliseconds(0);
                     // get timeID
                     const current_day = cur_timeslot.getDay();
-                    console.log(cur_timeslot);
                     const current_hour = cur_timeslot.getHours();
                     return (current_day * 24 + current_hour);
                 })

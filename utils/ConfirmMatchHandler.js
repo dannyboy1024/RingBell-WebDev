@@ -17,12 +17,12 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     const bellringerEmail = bellRinger.email;
     const time = new Date(timeSlot);
     const displayedTime = getDateDisplay(time);
-    console.log(displayedTime);
+    console.log("Confirm timeslot: "+ displayedTime);
 
     // Modify availiability & queue
-    matchedListener.occupied_availability.push(time);
-    await Listener.findByIdAndDelete(matchedListener._id);
-    await Listener.create(matchedListener);
+    // matchedListener.occupied_availability.push(time);
+    // await Listener.findByIdAndDelete(matchedListener._id);
+    // await Listener.create(matchedListener);
 
     // create sender
     let transport = {
