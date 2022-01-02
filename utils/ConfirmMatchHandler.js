@@ -20,16 +20,16 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     console.log("Confirm timeslot: "+ displayedTime);
 
     // Modify availiability & queue
-    // matchedListener.occupied_availability.push(time);
-    // await Listener.findByIdAndDelete(matchedListener._id);
-    // await Listener.create(matchedListener);
+    matchedListener.occupied_availability.push(time);
+    await Listener.findByIdAndDelete(matchedListener._id);
+    await Listener.create(matchedListener);
 
     // create sender
     let transport = {
         // service: 'smtp.gmail.com',
         service: 'gmail',
         host: 'smtp.gmail.com',
-        secure: false,
+        secure: true,
         tls: {
             rejectUnauthorized: false
         },
