@@ -52,6 +52,7 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
 // @route       GET /api/v1/users/login
 // @access      Private
 exports.getUserInfo = asyncHandler(async (req, res, next) => {
+  console.log(req);
   const user = await User.findOne({token: req.body.token});
   if (!user) {
     return next(new ErrorResponse(`Wrong Token`, 404));
@@ -69,7 +70,6 @@ exports.getUserInfo = asyncHandler(async (req, res, next) => {
 // @route       POST /api/v1/users/update
 // @access      Private
 exports.updateUserInfo = asyncHandler(async (req, res, next) => {
-  console.log(req);
   const user = await User.findOne({token: req.body.token});
   if (!user) {
     return next(new ErrorResponse(`Wrong Token`, 404));
