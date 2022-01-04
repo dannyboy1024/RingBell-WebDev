@@ -36,12 +36,12 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
   var reToken = await User.findOne({email: req.body.email});
   var oldTime = new Date(reToken.updated);
   var i = 0;
-  while (correntTime.getTime() - oldTime.getTime() > 0 && i < 30){
+  while (correntTime.getTime() - oldTime.getTime() > 0 && i < 60){
     reToken = await User.findOne({email: req.body.email});
     oldTime = new Date(reToken.updated);
     i++;
   }
-  if (i < 30) {
+  if (i < 60) {
     res.status(200).json({success: true, data: reToken.token});
   } else {
     return next(new ErrorResponse(`Request Timeout`, 408));
