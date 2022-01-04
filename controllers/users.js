@@ -52,7 +52,7 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
 // @route       GET /api/v1/users/login
 // @access      Private
 exports.getUserInfo = asyncHandler(async (req, res, next) => {
-  console.log(req.body);
+  console.log(req.query);
   const user = await User.findOne({token: req.body.token});
   if (!user) {
     return next(new ErrorResponse(`Wrong Token`, 404));
