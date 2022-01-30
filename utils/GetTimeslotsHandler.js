@@ -31,7 +31,7 @@ class GetTimeslotsHandler {
                     // get timeID
                     const current_day = cur_timeslot.getDay();
                     const current_hour = cur_timeslot.getHours();
-                    return { date: cur_timeslot, timeID: (current_day * 24 + current_hour) };
+                    return { date: cur_timeslot, university: cur_listener.university, timeID: (current_day * 24 + current_hour) };
                 })
                 .filter(cur_timeslot => {
                     // check if time is occupied
