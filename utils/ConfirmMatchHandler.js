@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const EmailConfirm = require("./EmailHandler");
 
 
-const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
+const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) => {
     // Load env vars
     dotenv.config({ path: "../config/config.env" });
 
@@ -15,8 +15,9 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger) => {
     const listenerEmail = matchedListener.email;
     const bellringerName = bellRinger.name;
     const bellringerEmail = bellRinger.email;
-    const time = new Date(timeSlot);
-    const displayedTime = getDateDisplay(time);
+    // const time = new Date(timeSlot);
+    // const displayedTime = getDateDisplay(time);
+    const displayedTime = localTime;
     console.log("Confirm timeslot: "+ displayedTime);
 
     // Modify availiability & queue
