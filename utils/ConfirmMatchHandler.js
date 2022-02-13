@@ -15,7 +15,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
     const listenerEmail = matchedListener.email;
     const bellringerName = bellRinger.name;
     const bellringerEmail = bellRinger.email;
-    // const time = new Date(timeSlot);
+    const time = new Date(timeSlot);
     // const displayedTime = getDateDisplay(time);
     const displayedTime = localTime;
     console.log("Confirm timeslot: "+ displayedTime);
