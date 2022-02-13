@@ -43,7 +43,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
 
 
     // create email
-    const emailConfirm = new EmailConfirm(listenerName, listenerEmail, bellringerName, bellringerEmail, displayedTime);
+    const emailConfirm = new EmailConfirm(listenerName, listenerEmail, bellRinger, displayedTime);
 
     let listenerMsg = {
         from: '"Ringbell"<noreply@ringbell.com>', // sender address

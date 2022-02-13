@@ -1,10 +1,11 @@
 class EmailConfirm {
 
-    constructor(listenerName, listenerEmail, bellringerName, bellringerEmail, time) {
+    constructor(listenerName, listenerEmail, bellRinger, time) {
         this.listenerName = listenerName;
         this.listenerEmail = listenerEmail;
-        this.bellringerName = bellringerName;
-        this.bellringerEmail = bellringerEmail;
+        this.bellringerName = bellRinger.name;
+        this.bellringerEmail = bellRinger.email;
+        this.bellringerUni = bellRinger.university;
         this.time = time;
     }
 
@@ -39,7 +40,7 @@ class EmailConfirm {
     }
 
     listenerHTML = () => {
-        const { listenerName, listenerEmail, bellringerName, bellringerEmail, time } = this;
+        const { listenerName, listenerEmail, bellringerName, bellringerEmail, bellringerUni, time } = this;
         return (
             `<p><span style="font-weight: 400;">亲爱的 ${listenerName}， 我们已成功为您匹配到摇铃人 ${bellringerName}</span></p>
             <p> </p>
@@ -67,7 +68,7 @@ class EmailConfirm {
             <li><strong>精神状态: @X</strong></li>
             </ul>
             <ul>
-            <li><strong>其他信息: @X</strong></li>
+            <li><strong>其他信息: ${bellringerName}来自 ${bellringerUni}</strong></li>
             </ul>
             <p> </p>
             <p><br /><br /></p>
