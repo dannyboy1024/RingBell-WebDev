@@ -4,7 +4,8 @@ const morgan = require("morgan");
 const connectDB = require("./config/db");
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
-const CROS_handeler = require("./middleware/CORS_handeler");
+const CORS_handeler = require("./middleware/CORS_handeler");
+const path = require('path');
 
 // Load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -20,9 +21,14 @@ const { propfind } = require("./routers/listeners");
 
 const app = express();
 
-// CROS
-app.use(CROS_handeler);
+// Get front end
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
+// CORS
+app.use(CORS_handeler);
 // Body parser
 app.use(express.json());
 const bodyParser = require('body-parser');
@@ -40,8 +46,9 @@ app.use("/api/v1/listeners", listeners);
 app.use("/api/v1/users", users);
 app.use("/api/v1/dev", devTools);
 app.use("/", (req, res, next) => {
-  res.send("Welcome to RingBell API");
-  next();
+  //res.send("Welcome to RingBell API");
+  //next();
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 // error handler
