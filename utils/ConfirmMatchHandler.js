@@ -18,7 +18,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
     const time = new Date(timeSlot);
     // const displayedTime = getDateDisplay(time);
     const displayedTime = localTime;
-    console.log("Confirm timeslot: "+ displayedTime);
+    console.log("Confirm timeslot: " + displayedTime);
 
     // Modify availiability & queue
     matchedListener.occupied_availability.push(time);
@@ -27,16 +27,11 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
 
     // create sender
     let transport = {
-        // service: 'smtp.gmail.com',
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        secure: true,
-        tls: {
-            rejectUnauthorized: false
-        },
+        service: "gmail",
         auth: {
-            user: process.env.TEST_EMAIL,
-            pass: process.env.TEST_EMAIL_PASSWORD
+            user: process.env.TEST_EMAIL, // your email address
+            pass: process.env.TEST_EMAIL_PASSWORD // your email password
+
         }
     };
     var transporter = nodemailer.createTransport(transport);
