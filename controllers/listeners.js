@@ -115,7 +115,11 @@ exports.getMatchListener = asyncHandler(async (req, res, next) => {
 exports.confirmMatch = asyncHandler(async (req, res, next) => {
   const { timeSlot, listener, bellRinger, localTime } = req.body.body;
   console.log(req.body.body);
-  ConfirmMatch(timeSlot, listener, bellRinger, localTime);
+
+  ConfirmMatch(timeSlot, listener, bellRinger, localTime)
+    .then(result => console.log('Email sent: ', result))
+    .catch(error => console.log(error.message));
+
   res.status(200).json({ success: true, data: { timeSlot, listener, bellRinger, localTime } });
 });
 

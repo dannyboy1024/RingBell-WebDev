@@ -2,76 +2,78 @@ const dotenv = require("dotenv");
 const Listener = require('../models/Listener');
 const { getNextAvailability, getDateDisplay } = require('./TimeTools');
 const nodemailer = require("nodemailer");
+const { google } = require('googleapis');
 
 const EmailConfirm = require("./EmailHandler");
 
+// Load env vars
+dotenv.config({ path: "../config/config.env" });
 
 const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) => {
-    // Load env vars
-    dotenv.config({ path: "../config/config.env" });
 
-    // variables
+    // Google API
+    const { OAuth_CLIENT_ID, OAuth_CLIENT_SECRET, REDIRECT_URI, REFERSH_TOKEN } = process.env;
+
+    const oAuth2Client = new google.auth.OAuth2(OAuth_CLIENT_ID, OAuth_CLIENT_SECRET, REDIRECT_URI);
+    oAuth2Client.setCredentials({ refresh_token: REFERSH_TOKEN })
+
+    // --------------------- update DB, create email ---------------------
+    const { SENDER_EMAIL, SENDER_EMAIL_PASSWORD } = process.env;
+
+    // variables in email
     const listenerName = matchedListener.name;
     const listenerEmail = matchedListener.email;
     const bellringerName = bellRinger.name;
     const bellringerEmail = bellRinger.email;
     const time = new Date(timeSlot);
-    // const displayedTime = getDateDisplay(time);
-    const displayedTime = localTime;
-    console.log("Confirm timeslot: " + displayedTime);
+    console.log("Confirm timeslot: " + localTime);
 
     // Modify availiability & queue
     matchedListener.occupied_availability.push(time);
     await Listener.findByIdAndDelete(matchedListener._id);
     await Listener.create(matchedListener);
 
-    // create sender
-    let transport = {
-        service: "gmail",
-        auth: {
-            user: process.env.TEST_EMAIL, // your email address
-            pass: process.env.TEST_EMAIL_PASSWORD // your email password
+    const emailConfirm = new EmailConfirm(listenerName, listenerEmail, bellRinger, localTime);
 
+    // --------------------- send email ---------------------
+    try {
+        const accessToken = await oAuth2Client.getAccessToken()
+        const transport = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                type: 'OAuth2',
+                user: SENDER_EMAIL,
+                clientId: OAuth_CLIENT_ID,
+                clientSecret: OAuth_CLIENT_SECRET,
+                refreshToken: REFERSH_TOKEN,
+                accessToken: accessToken
+
+            }
+        })
+
+        const listenerMailOptions = {
+            from: 'EmpowerChange <' + SENDER_EMAIL + '>',
+            to: listenerEmail,
+            subject: "Confirmation for Listener Matching",
+            Text: "Confirmation for Listener Matching",
+            html: emailConfirm.listenerHTML()
         }
-    };
-    var transporter = nodemailer.createTransport(transport);
 
+        const bellringerMailOptions = {
+            from: 'EmpowerChange <' + SENDER_EMAIL + '>',
+            to: bellringerEmail,
+            subject: "Confirmation for Listener Matching",
+            Text: "Confirmation for Listener Matching",
+            html: emailConfirm.bellringerHTML()
+        }
 
-    // create email
-    const emailConfirm = new EmailConfirm(listenerName, listenerEmail, bellRinger, displayedTime);
+        const listenerResult = await transport.sendMail(listenerMailOptions);
+        const bellringerResult = await transport.sendMail(bellringerMailOptions);
 
-    let listenerMsg = {
-        from: '"Ringbell"<noreply@ringbell.com>', // sender address
-        to: listenerEmail, // list of receivers
-        subject: "Confirmation for Listener Matching", // Subject line
-        text: "hello",
-        html: emailConfirm.listenerHTML()
+        return ({ listenerResult, bellringerResult });
+    } catch (error) {
+        return error
     }
-
-    let bellringerMsg = {
-        from: '"Ringbell"<noreply@ringbell.com>', // sender address
-        to: bellringerEmail, // list of receivers
-        subject: "Confirmation for Listener Matching", // Subject line
-        text: "hello",
-        html: emailConfirm.bellringerHTML()
-    }
-
-    // send
-    transporter.sendMail(listenerMsg, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log("-> Email successfully sent to listener!");
-    });
-
-    transporter.sendMail(bellringerMsg, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log("-> Email successfully sent to bellringer!");
-    });
-
 }
-
 
 module.exports = ConfirmMatch;
