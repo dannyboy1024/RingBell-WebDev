@@ -21,9 +21,9 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
     const { SENDER_EMAIL, SENDER_EMAIL_PASSWORD } = process.env;
 
     // variables in email
-    const listenerName = matchedListener.name;
+    const listener = matchedListener;
     const listenerEmail = matchedListener.email;
-    const bellringerName = bellRinger.name;
+    const bellringer = bellRinger;
     const bellringerEmail = bellRinger.email;
     const time = new Date(timeSlot);
     console.log("Confirm timeslot: " + localTime);
@@ -33,7 +33,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
     await Listener.findByIdAndDelete(matchedListener._id);
     await Listener.create(matchedListener);
 
-    const emailConfirm = new EmailConfirm(listenerName, listenerEmail, bellRinger, localTime);
+    const emailConfirm = new EmailConfirm(listener, bellringer, localTime);
 
     // --------------------- send email ---------------------
     try {
