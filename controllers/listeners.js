@@ -41,6 +41,23 @@ exports.createListener = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc        Create new listeners
+// @route       POST /api/v1/listeners
+// @access      Private
+exports.createListeners = asyncHandler(async (req, res, next) => {
+  const listener = await Listener.insertMany(req.body);
+  res.status(201).json({
+    success: true,
+    data: listener
+  });
+
+  // const listener = await Listener.create(req.body);
+  // res.status(201).json({
+  //   success: true,
+  //   data: listener
+  // });
+});
+
 // @desc        Update listener
 // @route       PUT /api/v1/listeners/:id
 // @access      Private
@@ -70,7 +87,7 @@ exports.deleteListener = asyncHandler(async (req, res, next) => {
 
 
 // @desc        get all timeslots (timeID array)
-// @route       POST /api/v1/timeSlots
+// @route       GET /api/v1/timeSlots
 // @access      Private
 exports.getTimeslots = asyncHandler(async (req, res, next) => {
   const listeners = await Listener.find(req.query);
@@ -79,7 +96,7 @@ exports.getTimeslots = asyncHandler(async (req, res, next) => {
 });
 
 // @desc        get all timeslots in week
-// @route       POST /api/v1/timeSlotsInWeek
+// @route       GET /api/v1/timeSlotsInWeek
 // @access      Private
 exports.getTimeSlotsInWeek = asyncHandler(async (req, res, next) => {
   const listeners = await Listener.find(req.query);

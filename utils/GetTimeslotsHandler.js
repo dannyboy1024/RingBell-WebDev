@@ -93,7 +93,7 @@ class GetTimeslotsHandler {
             availableTimeslots.push(...cur_listener_timeslots);
         }
 
-        // return [] of <Date, timeID
+        // return [] of <Date, timeID>
         return [...new Set(availableTimeslots)];
     }
 
