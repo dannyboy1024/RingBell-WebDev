@@ -14,3 +14,9 @@ exports.resetDbState = asyncHandler(async (req, res, next) => {
     const insert_result = await Listener.insertMany(listeners_test_data_1);
     res.status(200).json({ success: true, data: insert_result });
 });
+
+exports.setupDb = asyncHandler(async (req, res, next) => {
+    const delete_result = await Listener.deleteMany({});
+    const insert_result = await Listener.insertMany(req.body);
+    res.status(200).json({ success: true, data: insert_result });
+});

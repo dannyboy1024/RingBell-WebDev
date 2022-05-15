@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
+const connectTestDB = require("./config/test_db");
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
 const CORS_handeler = require("./middleware/CORS_handeler");
@@ -11,7 +12,8 @@ const path = require('path');
 dotenv.config({ path: "./config/config.env" });
 
 // Connect to database
-connectDB();
+process.env.NODE_ENV === "development" ?
+  connectTestDB() : connectDB();
 
 // Route files
 const listeners = require("./routers/listeners");
@@ -23,7 +25,7 @@ const app = express();
 
 // Get front end
 app.use(express.static(path.join(__dirname, 'build')));
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 

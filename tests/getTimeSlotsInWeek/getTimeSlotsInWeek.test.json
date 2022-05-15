@@ -1,0 +1,84 @@
+[
+    {
+        "testName": "get timeslots in a week",
+        "route": "listeners/timeSlotsInWeek",
+        "expectedResponse": [
+            {
+                "date": "2022-05-15T14:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 10
+            },
+            {
+                "date": "2022-05-16T09:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 29
+            },
+            {
+                "date": "2022-05-17T13:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 57
+            },
+            {
+                "date": "2022-05-22T02:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 166
+            },
+            {
+                "date": "2022-05-18T15:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 83
+            },
+            {
+                "date": "2022-05-19T13:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 105
+            },
+            {
+                "date": "2022-05-22T02:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 166
+            },
+            {
+                "date": "2022-05-19T13:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 105
+            },
+            {
+                "date": "2022-05-20T15:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 131
+            },
+            {
+                "date": "2022-05-21T02:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 142
+            },
+            {
+                "date": "2022-05-15T19:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 15
+            },
+            {
+                "date": "2022-05-16T19:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 39
+            },
+            {
+                "date": "2022-05-17T19:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 63
+            },
+            {
+                "date": "2022-05-15T04:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 0
+            },
+            {
+                "date": "2022-05-22T03:00:00.000Z",
+                "university": "多伦多大学 University of Toronto",
+                "timeID": 167
+            }
+        ],
+        "expectedStatusCode": 200
+    }
+]

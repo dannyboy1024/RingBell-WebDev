@@ -1,7 +1,8 @@
 const express = require("express");
 
 const {
-  resetDbState
+  resetDbState,
+  setupDb
 } = require("../dev_tools/dbTools");
 
 const router = express.Router();
@@ -12,5 +13,8 @@ router
   .route("/reset-db-state")
   .post(resetDbState);
 
+router
+  .route("/setupDB")
+  .post(setupDb);
 
 module.exports = router;

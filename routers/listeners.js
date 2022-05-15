@@ -5,6 +5,7 @@ const {
   getListener,
   getTimeslots,
   createListener,
+  createListeners,
   updateListener,
   deleteListener,
   getMatchListener,
@@ -38,9 +39,14 @@ router
 // ===================================== Basic CRUD =========================================
 
 router
+  .route("/bulk")
+  .post(createListeners);
+
+router
   .route("/")
   .get(getListeners)
   .post(createListener);
+
 
 router
   .route("/:id")
