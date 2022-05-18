@@ -16,7 +16,7 @@ class EmailConfirm {
             <p> </p>
             <p><span style="color: #800000;"> <strong> The listener ${listener.name} will send you the zoom link by email  ${listener.email} </strong> 10 minutes to 1 hour before your appointment time. (Please be sure to check your email before the appointment!) </strong> </span></p>
             <p> </p>
-            <p><span style="text-decoration: underline;"> <span style="font-weight: 400;"> If you need to cancel the appointment, please contact the listener through email as early as possible.</span> </span></p>
+            <p><span style="text-decoration: underline;"> <span style="font-weight: 400;"> If you need to cancel the appointment, please contact the listener through email as early as possible: contact.listener@gmail.com</span> </span></p>
             <p><span style="text-decoration: underline;"> <span style="font-weight: 400;"> If you do not attend the appointment within 25 minutes after the starting time,  your appointment will be automatically seen as canceled.</span> </span></p>
             <p> </p>
             <p><span style="font-weight: 400;"> This is a not-for-profit program，the listeners volunteer their time and effort to provide an open and inclusive listening space for their peers. Mutual respect is the basis of a good voluntary relationship. Please follow the appointment rules and ensure punctuality.</span></p>
