@@ -72,6 +72,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
 
         return ({ listenerResult, bellringerResult });
     } catch (error) {
+        console.log(error)
         return error
     }
 }
