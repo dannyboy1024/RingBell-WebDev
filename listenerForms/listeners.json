@@ -1,0 +1,239 @@
+[
+      {
+            "university": "U of T",
+            "name": "刘懿宁Rebecca",
+            "email": "yiningyn.liu@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 0,
+                        "hour": 14
+                  },
+                  {
+                        "day_in_week": 5,
+                        "hour": 0
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Ashley Zheng",
+            "email": "ashley.zheng@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 3,
+                        "hour": 2
+                  },
+                  {
+                        "day_in_week": 6,
+                        "hour": 2
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Laurence Yin",
+            "email": "Laurence.yin@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 4,
+                        "hour": 0
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Una Qian",
+            "email": "unaqyu@126.com",
+            "availability": [
+                  {
+                        "day_in_week": 1,
+                        "hour": 14
+                  },
+                  {
+                        "day_in_week": 5,
+                        "hour": 14
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Cynthia Wang",
+            "email": "shijingw2015@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 2,
+                        "hour": 2
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Yikai Tang ",
+            "email": "yikai.tang@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 6,
+                        "hour": 0
+                  },
+                  {
+                        "day_in_week": 0,
+                        "hour": 1
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Emily Tian",
+            "email": "emilyloveboston@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 6,
+                        "hour": 14
+                  },
+                  {
+                        "day_in_week": 4,
+                        "hour": 1
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Kay Cheng",
+            "email": "kay.cheng@mail.utoronto.ca",
+            "availability": ""
+      },
+      {
+            "university": "U of T",
+            "name": "Cath Niu",
+            "email": "huilin.niu@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 0,
+                        "hour": 2
+                  },
+                  {
+                        "day_in_week": 1,
+                        "hour": 2
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Sabrina Jia",
+            "email": "sabrinajsy@hotmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 3,
+                        "hour": 0
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "David Ma",
+            "email": "itsdavidma.yq@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 6,
+                        "hour": 1
+                  },
+                  {
+                        "day_in_week": 4,
+                        "hour": 2
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Grace Zhou",
+            "email": "zhoux141@mcmaster.ca",
+            "availability": [
+                  {
+                        "day_in_week": 0,
+                        "hour": 0
+                  },
+                  {
+                        "day_in_week": 1,
+                        "hour": 0
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Yvonne Wang",
+            "email": "yingyuu.wang@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 2,
+                        "hour": 1
+                  },
+                  {
+                        "day_in_week": 5,
+                        "hour": 2
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Liliana Liu",
+            "email": "jinze.liu@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 1,
+                        "hour": 1
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "QQ",
+            "email": "qqzipcar@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 2,
+                        "hour": 14
+                  },
+                  {
+                        "day_in_week": 4,
+                        "hour": 14
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Adler",
+            "email": "chiheng.zhou@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 3,
+                        "hour": 14
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Candice Chen",
+            "email": "haoning.chen@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 4,
+                        "hour": 0
+                  }
+            ]
+      },
+      {
+            "university": "U of T",
+            "name": "Letitia",
+            "email": "letitia.su@mail.utoronto.ca",
+            "availability": [
+                  {
+                        "day_in_week": 3,
+                        "hour": 1
+                  },
+                  {
+                        "day_in_week": 5,
+                        "hour": 1
+                  }
+            ]
+      }
+]
