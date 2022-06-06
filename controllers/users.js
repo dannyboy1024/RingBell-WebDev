@@ -43,11 +43,11 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
     oldTime = new Date(reToken.updated);
     i++;
   }
-  if (i < timeoutLimit) {
+  // if (i < timeoutLimit) {
     res.status(200).json({success: true, data: reToken.token});
-  } else {
-    return next(new ErrorResponse(`Request Timeout`, 408));
-  }
+  // } else {
+  //   return next(new ErrorResponse(`Request Timeout`, 408));
+  // }
 });
 
 // @desc        Get user info in datebase
