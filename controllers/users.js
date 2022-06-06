@@ -37,7 +37,7 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
   var oldTime = new Date(reToken.updated);
   var i = 0;
   
-  const timeoutLimit = 80
+  const timeoutLimit = 120
   while (correntTime.getTime() - oldTime.getTime() > 0 && i < timeoutLimit){
     reToken = await User.findOne({email: req.body.email});
     oldTime = new Date(reToken.updated);
