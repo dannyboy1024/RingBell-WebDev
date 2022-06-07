@@ -33,21 +33,27 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse(`Password incorrect with email of ${req.body.email}`, 401));
     }
   });
-  var reToken = await User.findOne({email: req.body.email});
-  var oldTime = new Date(reToken.updated);
   var i = 0;
-  
-  const timeoutLimit = 1000
-  while (correntTime.getTime() - oldTime.getTime() > 0 && i < timeoutLimit){
-    reToken = await User.findOne({email: req.body.email});
-    oldTime = new Date(reToken.updated);
+  const timeoutLimit = 1000;
+  var login = false;
+  while (i < timeoutLimit && login == false) {
+    await User.findOne({email: req.body.email}).then(
+      reToken => {
+        const sending = new Object();
+        sending.reToken = reToken;
+        sending.valid = correntTime.getTime() < new Date(reToken.updated).getTime();
+        return sending;
+      }
+    ).then(sending => {
+      if (sending.valid) {
+        res.status(200).json({success: true, data: sending.reToken.token});
+        login = true;
+      }
+    });
     i++;
   }
-  if (i < timeoutLimit) {
-    res.status(200).json({success: true, data: reToken.token});
-  } else {
-    return next(new ErrorResponse(`Request Timeout`, 408));
-  }
+  console.log(i);
+  return login ? null : next(new ErrorResponse(`Request Timeout`, 408));
 });
 
 // @desc        Get user info in datebase
