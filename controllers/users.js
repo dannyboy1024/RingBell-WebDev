@@ -52,7 +52,7 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
     });
     i++;
   }
-  console.log(i);
+  // console.log(i); The timeoutLimit limit can be dynamically adjusted by detecting the specific number of requests from different client runtimes.
   return login ? null : next(new ErrorResponse(`Request Timeout`, 408));
 });
 
