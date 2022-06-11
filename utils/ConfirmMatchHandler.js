@@ -28,6 +28,12 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
     const time = new Date(timeSlot);
     console.log("Confirm timeslot: " + localTime);
 
+    // email for service reliability managers
+    var serviceMonitorMaillist = [
+        "yuto.dong@mail.utoronto.ca",
+        "zhoux141@mcmaster.ca"
+    ];
+
     // Modify availiability & queue
     matchedListener.occupied_availability.push(time);
     await Listener.findByIdAndDelete(matchedListener._id);
@@ -67,8 +73,17 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
             html: emailConfirm.bellringerHTML()
         }
 
+        const serviceMonitorMailOptions = {
+            from: 'EmpowerChange <' + SENDER_EMAIL + '>',
+            to: serviceMonitorMaillist,
+            subject: "New Matching Created",
+            Text: "Confirmation for Listener Matching",
+            html: emailConfirm.serviceMonitorHTML()
+        }
+
         const listenerResult = await transport.sendMail(listenerMailOptions);
         const bellringerResult = await transport.sendMail(bellringerMailOptions);
+        const serviceMonitorResult = await transport.sendMail(serviceMonitorMailOptions);
 
         return ({ listenerResult, bellringerResult });
     } catch (error) {

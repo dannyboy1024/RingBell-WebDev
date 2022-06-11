@@ -75,6 +75,16 @@ class EmailConfirm {
             <p><span style="font-weight: 400;">EmpowerCHANGE</span></p>`
         );
     }
+
+    serviceMonitorHTML = () => {
+        const { listener, bellringer, time } = this;
+        return (
+            `<p><span style="font-weight: 400;"> Hi, new matching has been created. </span></p>
+            <p><span style="font-weight: 400;">  * Bellringer: ${bellringer.name}</span></p>
+            <p><span style="font-weight: 400;">  * Listener: ${listener.name}</span></p>
+            <p><span style="font-weight: 400;">  * Appointmemt time: ${time}</span></p>`
+        );
+    }
 }
 
 module.exports = EmailConfirm;
