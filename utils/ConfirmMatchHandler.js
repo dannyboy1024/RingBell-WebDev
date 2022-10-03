@@ -85,7 +85,7 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
         const bellringerResult = await transport.sendMail(bellringerMailOptions);
         const serviceMonitorResult = await transport.sendMail(serviceMonitorMailOptions);
 
-        return ({ listenerResult, bellringerResult });
+        return ({ listenerResult, bellringerResult, serviceMonitorResult });
     } catch (error) {
         console.log(error)
         return error
