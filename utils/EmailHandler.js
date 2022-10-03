@@ -82,7 +82,32 @@ class EmailConfirm {
             `<p><span style="font-weight: 400;"> Hi, new matching has been created. </span></p>
             <p><span style="font-weight: 400;">  * Bellringer: ${bellringer.name}</span></p>
             <p><span style="font-weight: 400;">  * Listener: ${listener.name}</span></p>
-            <p><span style="font-weight: 400;">  * Appointmemt time: ${time}</span></p>`
+            <p><span style="font-weight: 400;">  * Appointmemt time: ${time}</span></p>
+            <p> </p>
+            <p><strong>The following are Client ${bellringer.name}’s basic information: ：</strong></p>
+            <p> </p>
+            <ul>
+            <li><strong><strong>Name: ${bellringer.name}</strong></strong></li>
+            </ul>
+            <ul>
+            <li><strong>Email: ${bellringer.email}</strong></li>
+            </ul>
+            <ul>
+            <li><strong>University: ${bellringer.matchUni}</strong></li>
+            </ul>
+            <ul>
+            <li><strong>Listening topic: ${bellringer.topic}</strong></li>
+            </ul>
+            <ul>
+            <li><strong>Listening desire(s): ${bellringer.desire}</strong></li>
+            </ul>
+            <ul>
+            <li><strong>Mental states: ${bellringer['mental status']}</strong></li>
+            </ul>
+            <ul>
+            <li><strong>Other information: ${bellringer.other_info}</strong></li>
+            </ul>
+            `
         );
     }
 }

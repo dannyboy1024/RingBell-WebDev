@@ -31,7 +31,8 @@ const ConfirmMatch = async (timeSlot, matchedListener, bellRinger, localTime) =>
     // email for service reliability managers
     var serviceMonitorMaillist = [
         "yuto.dong@mail.utoronto.ca",
-        "zhoux141@mcmaster.ca"
+        "zhoux141@mcmaster.ca",
+        "ringbell.test@gmail.com"
     ];
 
     // Modify availiability & queue
