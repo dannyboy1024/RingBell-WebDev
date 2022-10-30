@@ -1,0 +1,148 @@
+[
+      {
+            "university": "uwo",
+            "name": "Tony",
+            "email": "tonyweizihe@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 1,
+                        "hour": 23
+                  },
+                  {
+                        "day_in_week": 2,
+                        "hour": 0
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "Kristen",
+            "email": "ljykristen@outlook.com",
+            "availability": [
+                  {
+                        "day_in_week": 2,
+                        "hour": 23
+                  },
+                  {
+                        "day_in_week": 5,
+                        "hour": 23
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "Mikey",
+            "email": "lbt522@icloud.com",
+            "availability": [
+                  {
+                        "day_in_week": 5,
+                        "hour": 0
+                  },
+                  {
+                        "day_in_week": 5,
+                        "hour": 1
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "Jason",
+            "email": "xjason0312@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 3,
+                        "hour": 0
+                  },
+                  {
+                        "day_in_week": 3,
+                        "hour": 1
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "Ruby",
+            "email": "1278175585@qq.com",
+            "availability": [
+                  {
+                        "day_in_week": 6,
+                        "hour": 0
+                  },
+                  {
+                        "day_in_week": 0,
+                        "hour": 1
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "BIllie",
+            "email": "875486009@qq.com",
+            "availability": [
+                  {
+                        "day_in_week": 3,
+                        "hour": 23
+                  },
+                  {
+                        "day_in_week": 4,
+                        "hour": 0
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "Xinna",
+            "email": "Qxn18600255580@163.com",
+            "availability": [
+                  {
+                        "day_in_week": 2,
+                        "hour": 1
+                  },
+                  {
+                        "day_in_week": 6,
+                        "hour": 1
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "Silvia",
+            "email": "chenqiaoman07@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 4,
+                        "hour": 1
+                  },
+                  {
+                        "day_in_week": 4,
+                        "hour": 23
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "julie",
+            "email": "2068401331@qq.com",
+            "availability": [
+                  {
+                        "day_in_week": 6,
+                        "hour": 23
+                  },
+                  {
+                        "day_in_week": 0,
+                        "hour": 23
+                  }
+            ]
+      },
+      {
+            "university": "uwo",
+            "name": "Jet",
+            "email": "jetzhou0206@gmail.com",
+            "availability": [
+                  {
+                        "day_in_week": 1,
+                        "hour": 0
+                  }
+            ]
+      }
+]

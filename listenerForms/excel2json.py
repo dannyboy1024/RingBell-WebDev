@@ -1,7 +1,7 @@
 import json
 import openpyxl
 
-NUM_ROWS = 20
+NUM_ROWS = 13
 TIMEZONE_OFFSET = 4 
 
 def getListeners(excelFileName):
@@ -53,7 +53,7 @@ def genJsonFile(listeners, jsonFileName):
     json.dump(listeners, out_file, ensure_ascii=False, indent = 6)
     out_file.close()
 
-genJsonFile(getListeners('listeners.xlsx'), 'listeners.json')
+genJsonFile(getListeners('uwo_listeners.xlsx'), 'uwo_listeners.json')
 
 
 
